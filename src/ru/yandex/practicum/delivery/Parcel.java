@@ -1,5 +1,29 @@
 package ru.yandex.practicum.delivery;
 
-public class Parcel {
-    //добавьте реализацию и другие необходимые классы
+public abstract class Parcel {
+    protected final String description;
+    protected final double weight;
+    protected final String deliveryAddress;
+    protected final byte sendDay;
+
+    public Parcel(String description, double weight, String deliveryAddress, byte sendDay) {
+        this.description = description;
+        this.weight = weight;
+        this.deliveryAddress = deliveryAddress;
+        this.sendDay = sendDay;
+    }
+
+    public void packageItem() {
+        System.out.printf("Посылка %s упакована%n", description);
+    }
+
+    public void deliver() {
+        System.out.printf("Посылка %s доставлена по адресу %s%n", description, deliveryAddress);
+    }
+
+    public double calculateDeliveryCost() {
+        return weight * getDeliveryCost();
+    }
+
+    public abstract double getDeliveryCost();
 }
