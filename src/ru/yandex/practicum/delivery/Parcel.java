@@ -4,9 +4,9 @@ public abstract class Parcel {
     protected final String description;
     protected final double weight;
     protected final String deliveryAddress;
-    protected final byte sendDay;
+    protected final int sendDay;
 
-    public Parcel(String description, double weight, String deliveryAddress, byte sendDay) {
+    public Parcel(String description, double weight, String deliveryAddress, int sendDay) {
         this.description = description;
         this.weight = weight;
         this.deliveryAddress = deliveryAddress;
@@ -26,4 +26,20 @@ public abstract class Parcel {
     }
 
     public abstract double getDeliveryCost();
+
+    public String getDescription() {
+        return description;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public String getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+    public int getSendDay() {
+        return sendDay;
+    }
 }

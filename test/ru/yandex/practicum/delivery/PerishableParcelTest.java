@@ -10,37 +10,21 @@ class PerishableParcelTest {
 
     @BeforeAll
     static void beforeAll() {
-        perishableParcel = new PerishableParcel("Bananas", 8, "Beijing", (byte) 23, (byte) 5);
+        perishableParcel = new PerishableParcel("Bananas", 8, "Beijing", 23, 5);
     }
 
     @Test
-    void calculateDeliveryCost() {
-
-        Assertions.assertEquals(24, perishableParcel.calculateDeliveryCost());
-    }
-
-    @Test
-    void isExpiredOn29Day() {
-        Assertions.assertTrue(perishableParcel.isExpired((byte) 29));
+    void isNotExpiredOn27Day() {
+        Assertions.assertFalse(perishableParcel.isExpired(27));
     }
 
     @Test
     void isNotExpiredOn28Day() {
-        Assertions.assertFalse(perishableParcel.isExpired((byte) 28));
+        Assertions.assertFalse(perishableParcel.isExpired(28));
     }
 
     @Test
-    void isExpiredOn30Day() {
-        Assertions.assertTrue(perishableParcel.isExpired((byte) 30));
-    }
-
-    @Test
-    void isNotExpiredOn23Day() {
-        Assertions.assertFalse(perishableParcel.isExpired((byte) 23));
-    }
-
-    @Test
-    void isNotExpiredOn24Day() {
-        Assertions.assertFalse(perishableParcel.isExpired((byte) 24));
+    void isExpiredOn29Day() {
+        Assertions.assertTrue(perishableParcel.isExpired( 29));
     }
 }

@@ -96,7 +96,7 @@ public class DeliveryApp {
     private static void reportStatus(){
         for (Trackable trackable : allTrackableParcels) {
             if (trackable instanceof Parcel parcel) {
-                System.out.printf("Введите новое местоположение для посылки %s%n", parcel.description);
+                System.out.printf("Введите новое местоположение для посылки %s%n", parcel.getDescription());
             }
             String newLocation = scanner.nextLine();
 
@@ -161,10 +161,10 @@ public class DeliveryApp {
         }
     }
 
-    private static byte nextLineToByteDay() {
+    private static int nextLineToIntDay() {
         while (true) try {
             String string = scanner.nextLine();
-            byte day = Byte.parseByte(string);
+            int day = Integer.parseInt(string);
             if (day > 0) {
                 return day;
             } else {
@@ -190,10 +190,10 @@ public class DeliveryApp {
         String deliveryAddress = scanner.nextLine();
 
         System.out.println("Введите день отправки: ");
-        byte sendDay = nextLineToByteDay();
+        int sendDay = nextLineToIntDay();
         while (sendDay <= 0 || sendDay > 31) {
             System.out.println("День отправки должен находится в пределах от 1 до 31, введите день еще раз: ");
-            sendDay = nextLineToByteDay();
+            sendDay = nextLineToIntDay();
         }
 
         switch (choice) {
@@ -208,7 +208,7 @@ public class DeliveryApp {
                 return fragileParcel;
             case 3 :
                 System.out.println("Введите срок годности: ");
-                byte timeToLive = nextLineToByteDay();
+                int timeToLive = nextLineToIntDay();
                 PerishableParcel perishableParcel = new PerishableParcel(description, weight, deliveryAddress, sendDay, timeToLive);
                 boxOfPerishableParcels.addParcel(perishableParcel);
                 return perishableParcel;

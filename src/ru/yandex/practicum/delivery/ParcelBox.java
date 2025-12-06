@@ -12,8 +12,8 @@ public class ParcelBox<T extends Parcel> {
     }
 
     public void addParcel(T parcel) {
-        double additionWeight = parcel.weight;
-        String additionParcel = parcel.description;
+        double additionWeight = parcel.getWeight();
+        String additionParcel = parcel.getDescription();
 
         if (weight + additionWeight > maxWeight) {
             System.out.printf("В коробке нет места для посылки %s%n", additionParcel);
@@ -26,5 +26,17 @@ public class ParcelBox<T extends Parcel> {
 
     public ArrayList<T> getAll() {
         return parcels;
+    }
+
+    public double getMaxWeight() {
+        return maxWeight;
+    }
+
+    public ArrayList<T> getParcels() {
+        return parcels;
+    }
+
+    public double getWeight() {
+        return weight;
     }
 }
